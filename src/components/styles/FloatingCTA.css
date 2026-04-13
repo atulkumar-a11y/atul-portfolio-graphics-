@@ -1,0 +1,78 @@
+.floating-cta-wrapper {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.floating-cta-wrapper.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.floating-cta-anim {
+  animation: floatCTA 3s ease-in-out infinite;
+}
+
+@keyframes floatCTA {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+.floating-cta {
+  background-color: #FF2D2D;
+  color: #FFFFFF;
+  padding: 12px 24px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: 0 4px 15px rgba(255, 45, 45, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  transform-origin: center;
+}
+
+.floating-cta:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 45, 45, 0.6);
+  background-color: #ff4747;
+}
+
+.floating-cta:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 10px rgba(255, 45, 45, 0.4);
+}
+
+.cta-text {
+  letter-spacing: 0.5px;
+}
+
+.cta-icon {
+  font-size: 16px;
+}
+
+@media only screen and (max-width: 768px) {
+  .floating-cta-wrapper {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .floating-cta {
+    padding: 10px 18px;
+    font-size: 14px;
+    gap: 8px;
+  }
+  
+  .cta-icon {
+    font-size: 14px;
+  }
+}
