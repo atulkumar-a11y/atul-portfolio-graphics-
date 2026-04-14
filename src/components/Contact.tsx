@@ -96,15 +96,7 @@ const Contact = () => {
             >
               Behance <MdArrowOutward />
             </a>
-            <a
-              href="https://github.com/atulkumar-a11y"
-              target="_blank"
-              rel="noreferrer"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              GitHub <MdArrowOutward />
-            </a>
+
           </div>
           <div className="contact-box">
             <h2>

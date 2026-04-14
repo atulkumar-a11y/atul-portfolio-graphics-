@@ -3,7 +3,6 @@ import {
   FaLinkedinIn,
   FaBehance,
   FaWhatsapp,
-  FaGithub,
 } from "react-icons/fa6";
 import "./styles/SocialIcons.css";
 import { FaDownload } from "react-icons/fa6";
@@ -60,15 +59,7 @@ const SocialIcons = () => {
   return (
     <div className="icons-section">
       <div className="social-icons" data-cursor="icons" id="social">
-        <span>
-          <a
-            href="https://github.com/atulkumar-a11y"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaGithub />
-          </a>
-        </span>
+
         <span>
           <a
             href="https://www.linkedin.com/in/atul-kumar-213691177/"
