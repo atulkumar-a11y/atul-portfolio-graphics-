@@ -97,7 +97,7 @@ const Contact = () => {
               Behance <MdArrowOutward />
             </a>
             <a
-              href="https://github.com"
+              href="https://github.com/atulkumar-a11y"
               target="_blank"
               rel="noreferrer"
               data-cursor="disable"
