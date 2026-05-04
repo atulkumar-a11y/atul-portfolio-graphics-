@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 import "./styles/Work.css";
 import WorkImage from "./WorkImage";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const projects = [
   {
@@ -37,6 +38,8 @@ const projects = [
 const Work = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const navigate = useNavigate();
 
   const goToSlide = useCallback(
     (index: number) => {
@@ -59,6 +62,18 @@ const Work = () => {
       currentIndex === projects.length - 1 ? 0 : currentIndex + 1;
     goToSlide(newIndex);
   }, [currentIndex, goToSlide]);
+
+  const handleViewCaseStudy = (project: typeof projects[0]) => {
+    if (project.title === "magicpin Digital Campaigns") {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        navigate("/projects/magicpin-digital-campaigns");
+        setTimeout(() => setIsTransitioning(false), 500);
+      }, 500);
+    } else {
+      window.open(project.link, "_blank");
+    }
+  };
 
   return (
     <div className="work-section" id="work">
@@ -110,9 +125,16 @@ const Work = () => {
                           <span className="tools-label">Tools & Features</span>
                           <p>{project.tools}</p>
                         </div>
+                        <button 
+                          className="premium-cta" 
+                          onClick={() => handleViewCaseStudy(project)}
+                          data-cursor="pointer"
+                        >
+                          VIEW CASE STUDY &rarr;
+                        </button>
                       </div>
                     </div>
-                    <div className="carousel-image-wrapper">
+                    <div className={`carousel-image-wrapper ${isTransitioning && index === currentIndex ? 'zooming' : ''}`}>
                       <WorkImage
                         image={project.image}
                         alt={project.title}
@@ -140,6 +162,9 @@ const Work = () => {
           </div>
         </div>
       </div>
+
+      {/* Cinematic Transition Overlay */}
+      <div className={`cinematic-overlay ${isTransitioning ? "active" : ""}`} />
     </div>
   );
 };
